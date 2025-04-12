@@ -1,6 +1,11 @@
 package reservation;
 
 public class User {
-    public String userId;
+    public Integer userId;
     public String liscenseNum;
+
+    public User(Integer userId,String liscenseNum){
+        this.userId=userId;
+        this.liscenseNum=liscenseNum;
+    }
 }

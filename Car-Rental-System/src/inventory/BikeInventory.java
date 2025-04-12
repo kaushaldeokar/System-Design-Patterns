@@ -3,11 +3,23 @@ package inventory;
 
 import products.Vehicle;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class BikeInventory extends VehicleInventory {
+public class BikeInventory implements VehicleInventory {
 
-    public BikeInventory(List<Vehicle> vehicleList){
-        super(vehicleList);
+    public List<Vehicle> vehicleList;
+
+    public BikeInventory(){
+        vehicleList = new ArrayList<>();
+    }
+
+    public void addVehicle(Vehicle vehicle){
+        this.vehicleList.add(vehicle);
+    }
+
+    @Override
+    public List<Vehicle> getAllVehicle() {
+        return vehicleList;
     }
 }

@@ -5,10 +5,10 @@ import products.VehicleType;
 import java.util.HashMap;
 
 public class InventoryFactory {
-    static HashMap<VehicleType, VehicleInventory> vehicleTypeVehicleInventoryHashMap = new HashMap<>();
+    public  HashMap<VehicleType, VehicleInventory> vehicleTypeVehicleInventoryHashMap;
 
-
-    static {
+    public InventoryFactory(){
+        this.vehicleTypeVehicleInventoryHashMap  = new HashMap<>();
         vehicleTypeVehicleInventoryHashMap.put(VehicleType.CAR,new CarInventory());
         vehicleTypeVehicleInventoryHashMap.put(VehicleType.BIKE, new BikeInventory());
     }

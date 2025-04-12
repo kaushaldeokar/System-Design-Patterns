@@ -1,13 +1,11 @@
 package inventory;
 
 import products.Vehicle;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class VehicleInventory {
-    List<Vehicle> vehicleList;
-
-    public VehicleInventory(List<Vehicle>vehicleList){
-        this.vehicleList=vehicleList;
-    }
-
+public interface VehicleInventory {
+    public void addVehicle(Vehicle vehicle);
+    public List<Vehicle> getAllVehicle();
 }
