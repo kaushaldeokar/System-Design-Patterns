@@ -1,4 +1,4 @@
-package inventory;
+package vendingMachine.inventory;
 
 
 import products.Vehicle;

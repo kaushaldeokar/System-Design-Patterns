@@ -1,8 +1,7 @@
-package inventory;
+package vendingMachine.inventory;
 
 import products.Vehicle;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface VehicleInventory {

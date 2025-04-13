@@ -1,5 +1,5 @@
-import inventory.InventoryFactory;
-import inventory.VehicleInventory;
+import vendingMachine.inventory.InventoryFactory;
+import vendingMachine.inventory.VehicleInventory;
 import products.Vehicle;
 import products.VehicleType;
 import reservation.ReservationManager;

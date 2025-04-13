@@ -1,4 +1,3 @@
-import inventory.InventoryFactory;
 import payment.Bill;
 import payment.PaymentType;
 import products.Bike;
