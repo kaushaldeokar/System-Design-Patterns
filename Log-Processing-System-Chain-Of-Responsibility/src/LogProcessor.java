@@ -14,6 +14,7 @@ public class LogProcessor {
         this.nextLogProcessor=logProcessor;
     }
 
+
     public void log(int loglevel , String message){
         if(nextLogProcessor!=null){
             nextLogProcessor.log(loglevel, message);
