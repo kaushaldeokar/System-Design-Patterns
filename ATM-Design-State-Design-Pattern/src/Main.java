@@ -5,7 +5,6 @@ public class Main {
 
 
         AtmMachine atmMachine = new AtmMachine();
-
         // now input card //
         atmMachine.machineState.clickOnInsertCardButton(atmMachine);
 
