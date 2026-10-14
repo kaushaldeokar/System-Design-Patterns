@@ -65,10 +65,9 @@ public class Member {
 
     /**
      * Removes a loan from this member.
-     * @return true if removed, false if not present.
      */
-    public boolean removeLoan(Loan loan) {
-        return loans.remove(loan);
+    public void removeLoan(Loan loan) {
+        loans.remove(loan);
     }
 
     public boolean hasLoans() {
@@ -86,6 +85,15 @@ public class Member {
     /** Immutable snapshot — callers cannot mutate the internal list. */
     public List<Loan> getLoans() {
         return List.copyOf(loans);
+    }
+
+    public Loan getLoanByItemCopy(LibraryItemCopy itemCopy) {
+        for (Loan loan : loans) {
+            if (loan.getLibraryItemCopy().equals(itemCopy)) {
+                return loan;
+            }
+        }
+        return null;
     }
 
     public void clearLoans() {

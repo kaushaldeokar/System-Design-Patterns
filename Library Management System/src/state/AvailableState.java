@@ -6,8 +6,12 @@ import enums.BookState;
 
 public class AvailableState implements ItemState {
 
+    TransactionService transactionService = TransactionService.getInstance();
+
     @Override
     public void checkOutItem(LibraryItemCopy itemCopy, Member member) {
+
+        transactionService.checkOutItem(itemCopy, member);
         // Implement logic for checking out the item
         System.out.println("Item checked out by member: " + member.getName());
         // Change the state of the item to CheckedOutState
@@ -22,10 +26,8 @@ public class AvailableState implements ItemState {
 
     @Override
     public void holdItem(LibraryItemCopy itemCopy, Member member) {
-        // Implement logic for holding the item
-        System.out.println("Item held by member: " + member.getName());
-        // Change the state of the item to OnHoldState
-        itemCopy.setItemState(new OnHoldState());
+        // Item is already available, so holding it doesn't change the state
+        System.out.println("Item is already available. No action taken.");
     }
 
     @Override

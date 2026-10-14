@@ -56,5 +56,31 @@ public class LibraryManagementSystemDemo {
         });
 
 
+        System.out.println("--------------------------------------------------");
+
+        //
+        LibraryItem hobbit = LibraryItemFactory.createItem(ItemType.BOOK, 3L, "Hobbit", "F. Scott Fitzgerald");
+        libraryManagementSystem.addLibraryItem(hobbit, 1);
+
+        // Members Alice and BOB tries to get copied at same time
+        Member alice = new Member(2L, "Alice", "555-5678");
+        Member bob = new Member(3L, "Bob", "555-8765");
+        libraryManagementSystem.addMember(alice);
+        libraryManagementSystem.addMember(bob);
+
+        String hobbitCopyId = hobbit.getCopies().get(0).getId();
+        libraryManagementSystem.checkoutItemCopy(hobbitCopyId, alice.getId());
+        libraryManagementSystem.checkoutItemCopy(hobbitCopyId, bob.getId());
+
+        // Bob Places a hold on the copy
+        libraryManagementSystem.getLibraryItemCopies().get(hobbitCopyId).placeHold(bob);
+
+
+        // Alice returns the copy
+        libraryManagementSystem.returnItemCopy(hobbitCopyId, alice.getId());
+
+
+
+
     }
 }

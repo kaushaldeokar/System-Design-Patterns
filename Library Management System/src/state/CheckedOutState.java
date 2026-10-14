@@ -6,6 +6,8 @@ import enums.BookState;
 
 public class CheckedOutState implements ItemState {
 
+    TransactionService transactionService = TransactionService.getInstance();
+
     @Override
     public void checkOutItem(LibraryItemCopy itemCopy, Member member) {
         System.out.println("Item is already checked out.");
@@ -14,12 +16,18 @@ public class CheckedOutState implements ItemState {
     @Override
     public void returnItem(LibraryItemCopy itemCopy, Member member) {
         System.out.println("Returning the item.");
-        itemCopy.setItemState(new AvailableState());
+        transactionService.returnItem(itemCopy, member);
+        if(itemCopy.getLibraryItem().hasObservers()) {
+            itemCopy.setItemState(new OnHoldState());
+        } else {
+            itemCopy.setItemState(new AvailableState());
+        }
     }
 
     @Override
     public void holdItem(LibraryItemCopy itemCopy, Member member) {
-        System.out.println("Cannot place a hold on a checked out item.");
+        itemCopy.getLibraryItem().addObserver(member);
+        System.out.println("Member " + member.getName() + " has placed a hold on the item.");
     }
 
     @Override
