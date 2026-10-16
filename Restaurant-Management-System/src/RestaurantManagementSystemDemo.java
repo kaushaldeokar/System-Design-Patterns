@@ -1,3 +1,8 @@
+import decorator.BaseBill;
+import decorator.Bill;
+import decorator.ServiceCharges;
+import factory.CardPayment;
+import factory.Payment;
 import model.*;
 import observer.Customer;
 
@@ -36,6 +41,23 @@ public class RestaurantManagementSystemDemo {
         // change state of the order user will get notified
         orderItem.getState().prepare(orderItem);
         orderItem.getState().serve(orderItem);
+        orderItem.getState().serve(orderItem);
+        orderItem.getState().complete(orderItem);
+
+        // order now to be sent for payment Bill with a decorator pattern
+        Bill bill = new BaseBill(order);
+        System.out.println("Total Cost : " + bill.totalCost());
+        Bill withServiceCharges =  new ServiceCharges(bill);
+        System.out.println("Total Cost with Service charges: " + withServiceCharges.totalCost());
+
+        // Payment
+        Payment upi = new CardPayment();
+        upi.pay(withServiceCharges.totalCost());
+
+
+
+
+
 
 
 

@@ -15,7 +15,9 @@ public class ReadyToServeState implements OrderItemState {
 
     @Override
     public void complete(OrderItem context) {
-        System.out.println("Order item is already ready to be served. Cannot complete.");
+        System.out.println("Order item is served.");
+        context.setState(new OrderItemCompleteState());
+        context.notifyObservers();
     }
 
     @Override
