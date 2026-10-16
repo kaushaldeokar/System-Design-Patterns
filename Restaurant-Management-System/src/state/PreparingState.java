@@ -10,7 +10,9 @@ public class PreparingState implements OrderItemState {
 
     @Override
     public void serve(OrderItem context) {
-        System.out.println("Cannot serve order item while it is being prepared.");
+        System.out.println("Ready to Serve order item.");
+        context.setState(new ReadyToServeState());
+        context.notifyObservers();
     }
 
     @Override

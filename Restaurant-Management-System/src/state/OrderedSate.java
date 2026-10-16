@@ -6,6 +6,8 @@ public class OrderedSate implements OrderItemState {
     @Override
     public void prepare(OrderItem context) {
         System.out.println("Preparing the order item.");
+        context.setState(new PreparingState());
+        context.notifyObservers();
     }
 
     @Override

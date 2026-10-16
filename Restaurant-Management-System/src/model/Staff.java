@@ -1,6 +1,6 @@
 package model;
 
-public class Staff {
+public abstract class Staff {
     private String id;
     private String name;
 
@@ -24,6 +24,5 @@ public class Staff {
     public void setName(String name) {
         this.name = name;
     }
-
 
 }

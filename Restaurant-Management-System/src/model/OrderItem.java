@@ -50,11 +50,23 @@ public class OrderItem {
         return state;
     }
 
+    public void setState(OrderItemState state) {
+        this.state = state;
+    }
+
     public List<Observer> getObservers(){
         return observers;
     }
 
     public void addObserver(Observer observer){
-
+        observers.add(observer);
     }
+
+    public void notifyObservers(){
+        for(Observer observer : observers){
+            observer.notify(this);
+        }
+    }
+
+
 }
